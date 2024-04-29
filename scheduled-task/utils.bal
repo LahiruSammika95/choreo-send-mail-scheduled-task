@@ -1,6 +1,6 @@
-function generateWeatherTable(WeatherRecordList weatherRecords) returns string {
+function generateAdvertisementTable(AdvertisementList advertisementRecords) returns string {
     // Define the table header
-    string[] columns = ["   Date and Time   ", "Description", "Temperature", "Humidity", "Wind", "Cloud"];
+    string[] columns = ["  Name   ", "Price", "Available qty", "Publisher", "Location", "id"];
     string separator = " | ";
     string wtable = separator;
 
@@ -11,11 +11,10 @@ function generateWeatherTable(WeatherRecordList weatherRecords) returns string {
     wtable = wtable + "\n";
     
     // Add the table body
-    foreach var wrecord in weatherRecords.list {
-        wtable = wtable + separator + wrecord.dt_txt + separator + wrecord.weather[0].description
-        + separator + (wrecord.main.temp - 273.0).round(2).toString() + separator + (wrecord.main.humidity).toString()
-        + "%" + separator + (wrecord.wind.speed).toString() + " m/s, " + (wrecord.wind.deg).toString()
-        + "°" + separator + (wrecord.clouds.all).toString() + "%" + separator + "\n";
+    foreach var advertisement in advertisementRecords.list {
+        wtable = wtable + separator + advertisement.name + separator + advertisement.price.toString()
+        + separator + advertisement.qty.toString() + separator + advertisement.publisher
+        + separator + advertisement.province +  separator + advertisement.id + separator + "\n";
     }
 
     // Add the table footer
