@@ -1,4 +1,4 @@
-import ballerina/http;
+
 import wso2/choreo.sendemail;
 import ballerina/io;
 
