@@ -52,7 +52,7 @@ public function main() returns error? {
 
     
        
-        stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${true}`);        
+        stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${false}`);        
         check from Advertisement advertisement in resultStream
             do {
                 advertisements.push(advertisement);
