@@ -50,7 +50,7 @@ public function main() returns error? {
 
     
        
-        stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${false}`);        
+        stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${true}`);        
         check from Advertisement advertisement in resultStream
             do {
                 advertisementsIDs.push(advertisement.id.toString() +",");
