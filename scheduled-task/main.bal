@@ -12,9 +12,7 @@ configurable int port = ?;
 configurable string email = ?;
 const emailSubject = "Promoted advertisements";
 
-type AdvertisementList record {
-    Advertisement[] list;
-};
+
 
 type Advertisement record {|
     int id;
