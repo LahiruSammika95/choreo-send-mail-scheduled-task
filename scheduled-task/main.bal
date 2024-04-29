@@ -48,20 +48,20 @@ sendemail:Client emailClient = check new ();
 
 public function main() returns error? {
 
-        Advertisement[] advertisements = [];
+        string[] advertisementsIDs = [];
 
     
        
         stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${false}`);        
         check from Advertisement advertisement in resultStream
             do {
-                advertisements.push(advertisement);
+                advertisementsIDs.push(advertisement.id.toString() +",");
             };
         
        
         
   
     // Send the email
-    string _ = check emailClient->sendEmail(email, emailSubject,generateAdvertisementTable(advertisements));
+    string _ = check emailClient->sendEmail(email, emailSubject,advertisementsIDs.toBalString());
     io:println("Successfully sent the email.");
 }
