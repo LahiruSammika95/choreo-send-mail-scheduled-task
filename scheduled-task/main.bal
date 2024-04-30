@@ -50,15 +50,6 @@ sendemail:Client emailClient = check new ();
 
 public function main() returns error? {
 
-        // string[] advertisementsIDs = [];
-
-    
-       
-        // stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${true}`);        
-        // check from Advertisement advertisement in resultStream
-        //     do {
-        //         advertisementsIDs.push(advertisement.id.toString() + " - " +advertisement.name+ " - " + advertisement.tel+ " - " + advertisement.price.toString());
-        //     };
         
         Advertisement[] advertisements = [];
 

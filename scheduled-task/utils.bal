@@ -1,24 +1,24 @@
 function generatePromotedAdsTable(Advertisement[] promotedAdsRecord) returns string {
-    // Define the table header
+
     string[] columns = ["    Advertiment ID   ", "Advertiment name", "Available qty", "Price", "Phone", "Location"];
     string separator = " | ";
-    string wtable = separator;
+    string promotedAdTable = separator;
 
-    // Add the table header
+
     foreach var column in columns {
-        wtable = wtable + column + separator;
+        promotedAdTable = promotedAdTable + column + separator;
     }
-    wtable = wtable + "\n";
+    promotedAdTable = promotedAdTable + "\n";
     
-    // Add the table body
-    foreach var wrecord in promotedAdsRecord {
-        wtable = wtable + separator + wrecord.id.toString() + separator + wrecord.name
-        + separator + wrecord.qty.toString() + separator + wrecord.price.toString()
-        + separator + wrecord.tel 
-        + separator + wrecord.location + separator + "\n";
+
+    foreach var promotedAdRecord in promotedAdsRecord {
+        promotedAdTable = promotedAdTable + separator + promotedAdRecord.id.toString() + separator + promotedAdRecord.name
+        + separator + promotedAdRecord.qty.toString() + separator + promotedAdRecord.price.toString()
+        + separator + promotedAdRecord.tel 
+        + separator + promotedAdRecord.location + separator + "\n";
     }
 
-    // Add the table footer
-    wtable = wtable + "\n";
-    return wtable;
+  
+    promotedAdTable = promotedAdTable + "\n";
+    return promotedAdTable;
 }
