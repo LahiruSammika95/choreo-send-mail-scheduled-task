@@ -12,6 +12,10 @@ configurable int port = ?;
 configurable string email = ?;
 const emailSubject = "Promoted advertisements";
 
+type PromotedAdsRecordList record {
+    Advertisement[] list;
+};
+
 
 
 type Advertisement record {|
@@ -46,20 +50,30 @@ sendemail:Client emailClient = check new ();
 
 public function main() returns error? {
 
-        string[] advertisementsIDs = [];
+        // string[] advertisementsIDs = [];
+
+    
+       
+        // stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${true}`);        
+        // check from Advertisement advertisement in resultStream
+        //     do {
+        //         advertisementsIDs.push(advertisement.id.toString() + " - " +advertisement.name+ " - " + advertisement.tel+ " - " + advertisement.price.toString());
+        //     };
+        
+        Advertisement[] advertisements = [];
 
     
        
         stream<Advertisement, sql:Error?> resultStream = mysqlClient->query(`select * from advertisements where promoted=${true}`);        
         check from Advertisement advertisement in resultStream
             do {
-                advertisementsIDs.push(advertisement.id.toString() + " - " +advertisement.name+ " - " + advertisement.tel+ " - " + advertisement.price.toString());
+                advertisements.push(advertisement);
             };
-        
+
        
         
   
     // Send the email
-    string _ = check emailClient->sendEmail(email, emailSubject,advertisementsIDs.toBalString());
+    string _ = check emailClient->sendEmail(email, emailSubject,generatePromotedAdsTable(advertisements));
     io:println("Successfully sent the email.");
 }
