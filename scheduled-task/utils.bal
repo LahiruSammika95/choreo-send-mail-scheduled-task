@@ -12,7 +12,7 @@ function generatePromotedAdsTable(Advertisement[] promotedAdsRecord) returns str
     
     // Add the table body
     foreach var wrecord in promotedAdsRecord {
-        wtable = wtable + separator + wrecord.id + separator + wrecord.name
+        wtable = wtable + separator + wrecord.id.toString() + separator + wrecord.name
         + separator + wrecord.qty.toString() + separator + wrecord.price.toString()
         + separator + wrecord.address.toString() + " m/s, " + (wrecord.description).toString()
         + "°" + separator + (wrecord.location).toString() + "%" + separator + "\n";
